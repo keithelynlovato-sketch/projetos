@@ -1,198 +1,281 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agro Brasil 2026 - Pyetra</title>
+<title>SOCIAL PYETRA</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #0b1f14;
-        color: white;
-        scroll-behavior: smooth;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-    header {
-        background: linear-gradient(90deg, #1e7a3a, #0b3d1e);
-        padding: 20px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
+body{
+    background:#111827;
+    color:white;
+}
 
-    header h1 {
-        margin: 0;
-        font-size: 28px;
-    }
+header{
+    background:linear-gradient(135deg,#b818e0,#8bd660);
+    padding:25px;
+    text-align:center;
+}
 
-    nav a {
-        color: white;
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+header h1{
+    font-size:40px;
+}
 
-    nav a:hover {
-        color: #a3ffb5;
-    }
+header p{
+    margin-top:10px;
+}
 
-    .hero {
-        background: url('https://images.unsplash.com/photo-1602526215177-8c3a1a9c1f2b?auto=format&fit=crop&w=1400&q=80');
-        background-size: cover;
-        height: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
 
-    .hero h2 {
-        background: rgba(0,0,0,0.6);
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 32px;
-    }
+.novo-post{
+    background:#383232;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
 
-    section {
-        padding: 50px;
-        max-width: 1100px;
-        margin: auto;
-    }
+input[type=text],
+textarea{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:10px;
+}
 
-    .card {
-        background: #123524;
-        padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 20px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
+textarea{
+    height:120px;
+    resize:none;
+}
 
-    button {
-        background: #2ecc71;
-        border: none;
-        padding: 10px 15px;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+input[type=file]{
+    margin:10px 0;
+}
 
-    button:hover {
-        background: #27ae60;
-    }
+button{
+    background:#fdd90b;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
+button:hover{
+    background:#b4a0d3;
+}
 
-    img {
-        width: 100%;
-        border-radius: 10px;
-    }
+.post{
+    background:#1f2937;
+    margin-bottom:20px;
+    border-radius:15px;
+    overflow:hidden;
+}
 
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #06140d;
-        margin-top: 30px;
-    }
+.post-header{
+    padding:15px;
+    background:#374151;
+}
+
+.post-header h3{
+    margin-bottom:5px;
+}
+
+.post-conteudo{
+    padding:15px;
+}
+
+.post img{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+}
+
+.acoes{
+    padding:15px;
+    border-top:1px solid #374151;
+}
+
+.like{
+    cursor:pointer;
+}
+
+.comentarios{
+    padding:15px;
+}
+
+.comentario{
+    background:#374151;
+    padding:10px;
+    border-radius:8px;
+    margin-top:8px;
+}
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>🌱 Agro Brasil 2026</h1>
-    <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#tecnologia">Tecnologia</a>
-        <a href="#producao">Produção</a>
-        <a href="#sustentabilidade">Sustentabilidade</a>
-        <a href="#contato">Contato</a>
-    </nav>
+<h1>® SOCIAL PYETRA</h1>
+<p>Assinatura: Pyetra</p>
 </header>
 
-<div class="hero">
-    <h2>O futuro do agro brasileiro já começou em 2026 🚜🌾</h2>
+<div class="container">
+
+<div class="novo-post">
+
+<input type="text" id="nome" placeholder="Insira seu nome (opc)">
+
+<textarea id="mensagem"
+placeholder="escolha o que compartilhar"></textarea>
+
+<input type="file" id="foto" accept="image/*">
+
+<br><br>
+
+<button onclick="publicar()">
+Publicar Post
+</button>
+
 </div>
 
-<section id="sobre">
-    <div class="card">
-        <h2>📊 Sobre o Agro em 2026</h2>
-        <p>
-            O agronegócio brasileiro em 2026 representa um dos pilares da economia mundial,
-            com destaque em exportações, tecnologia agrícola e produção sustentável.
-            O setor ultrapassa trilhões em movimentação econômica e continua evoluindo com IA,
-            automação e agricultura de precisão.
-        </p>
-        <button onclick="alert('O agro brasileiro é um dos maiores do mundo em 2026!')">Saiba mais</button>
-    </div>
-</section>
+<div id="feed"></div>
 
-<section id="tecnologia">
-    <div class="card">
-        <h2>🤖 Tecnologia no Campo</h2>
-        <p>
-            Em 2026, o agro é altamente tecnológico: drones, sensores, inteligência artificial,
-            tratores autônomos e análise de dados em tempo real transformam a produção rural.
-        </p>
+</div>
 
-        <div class="grid">
-            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=600&q=80">
-            <img src="https://images.unsplash.com/photo-1601758123927-196a3a6f0d8c?auto=format&fit=crop&w=600&q=80">
-            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38b9d4b?auto=format&fit=crop&w=600&q=80">
-        </div>
+<script>
 
-        <br>
-        <button onclick="alert('IA e drones estão revolucionando o agro!')">Explorar tecnologia</button>
-    </div>
-</section>
+function publicar(){
 
-<section id="producao">
-    <div class="card">
-        <h2>🌾 Produção e Economia</h2>
-        <p>
-            O Brasil segue entre os maiores produtores globais de soja, milho, café e carne.
-            Em 2026, o valor bruto do agro ultrapassa R$ 1,3 trilhão, segundo estimativas do setor.
-        </p>
+let nome =
+document.getElementById("nome").value;
 
-        <ul>
-            <li>🌱 Soja: liderança mundial em exportação</li>
-            <li>🌽 Milho: crescimento contínuo</li>
-            <li>🥩 Pecuária: forte presença global</li>
-            <li>☕ Café: destaque em qualidade e volume</li>
-        </ul>
+let mensagem =
+document.getElementById("mensagem").value;
 
-        <button onclick="alert('Produção brasileira segue batendo recordes em 2026!')">Ver dados</button>
-    </div>
-</section>
+let foto =
+document.getElementById("foto").files[0];
 
-<section id="sustentabilidade">
-    <div class="card">
-        <h2>🌎 Sustentabilidade no Agro</h2>
-        <p>
-            O agro moderno foca em práticas sustentáveis: redução de emissão de carbono,
-            agricultura regenerativa, uso inteligente da água e preservação ambiental.
-        </p>
+if(nome.trim() === ""){
+    alert("Digite seu nome");
+    return;
+}
 
-        <div class="grid">
-            <img src="https://images.unsplash.com/photo-1615937645250-9c1c2b1f4a6f?auto=format&fit=crop&w=600&q=80">
-            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80">
-            <img src="https://images.unsplash.com/photo-1600679477092-32b0f2a5c6a4?auto=format&fit=crop&w=600&q=80">
-        </div>
+if(mensagem.trim() === "" && !foto){
+    alert("Escreva algo ou envie uma foto");
+    return;
+}
 
-        <button onclick="alert('Sustentabilidade é o futuro do agro!')">Ver iniciativas</button>
-    </div>
-</section>
+let feed =
+document.getElementById("feed");
 
-<footer>
-    <p>🌱 Site Agro Brasil 2026 — Desenvolvido por <strong>Pyetra</strong></p>
-</footer>
+let data =
+new Date().toLocaleString("pt-BR");
+
+let imagemHTML = "";
+
+if(foto){
+    let url =
+    URL.createObjectURL(foto);
+
+    imagemHTML =
+    `<img src="${url}">`;
+}
+
+let post =
+document.createElement("div");
+
+post.className = "post";
+
+post.innerHTML = `
+
+<div class="post-header">
+<h3>${nome}</h3>
+<small>${data}</small>
+</div>
+
+<div class="post-conteudo">
+<p>${mensagem}</p>
+${imagemHTML}
+</div>
+
+<div class="acoes">
+<span class="like"
+onclick="curtir(this)">
+❤️ Curtir (0)
+</span>
+</div>
+
+<div class="comentarios">
+
+<input type="text"
+placeholder="Escreva um comentário">
+
+<button onclick="comentar(this)">
+Comentar
+</button>
+
+<div class="lista"></div>
+
+</div>
+`;
+
+feed.prepend(post);
+
+document.getElementById("nome").value="";
+document.getElementById("mensagem").value="";
+document.getElementById("foto").value="";
+}
+
+function curtir(el){
+
+let texto = el.innerHTML;
+
+let numero =
+parseInt(texto.match(/\d+/)[0]);
+
+numero++;
+
+el.innerHTML =
+`❤️ Curtir (${numero})`;
+}
+
+function comentar(botao){
+
+let caixa =
+botao.parentElement.querySelector("input");
+
+if(caixa.value.trim() === ""){
+    return;
+}
+
+let lista =
+botao.parentElement.querySelector(".lista");
+
+let div =
+document.createElement("div");
+
+div.className="comentario";
+
+div.innerHTML =
+caixa.value;
+
+lista.appendChild(div);
+
+caixa.value="";
+}
+
+</script>
 
 </body>
 </html>
