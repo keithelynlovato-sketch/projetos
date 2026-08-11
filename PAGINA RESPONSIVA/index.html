@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialWeb</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #1c1e21;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: #1877f2;
+            color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .perfil {
+            font-weight: bold;
+        }
+
+        /* Container principal */
+        main {
+            width: 600px;
+            max-width: 95%;
+            margin: 25px auto;
+        }
+
+        /* Caixa de criar postagem */
+        .criar-post {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .criar-post textarea {
+            width: 100%;
+            height: 90px;
+            resize: none;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .criar-post textarea:focus {
+            border-color: #1877f2;
+        }
+
+        .botao-publicar {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .botao-publicar:hover {
+            background: #0d65d9;
+        }
+
+        /* Publicação */
+        .post {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background: #1877f2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .nome {
+            font-weight: bold;
+        }
+
+        .data {
+            color: #777;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .texto-post {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+        }
+
+        /* Botões */
+        .acoes {
+            display: flex;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+            gap: 10px;
+        }
+
+        .acoes button {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            border-radius: 6px;
+        }
+
+        .acoes button:hover {
+            background: #f0f2f5;
+        }
+
+        .curtido {
+            color: #1877f2;
+            font-weight: bold;
+        }
+
+        /* Comentários */
+        .comentarios {
+            margin-top: 15px;
+        }
+
+        .comentario {
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .comentario strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .campo-comentario {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .campo-comentario input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 10px 15px;
+            outline: none;
+        }
+
+        .campo-comentario button {
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+
+        .excluir {
+            color: #e41e3f !important;
+        }
+
+        @media (max-width: 500px) {
+            header {
+                padding: 0 15px;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            main {
+                max-width: 94%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌐 SocialWeb</h1>
+        <div class="perfil">Olá, Pyetra 👋</div>
+    </header>
+
+    <main>
+
+        <!-- Criar publicação -->
+        <section class="criar-post">
+            <textarea 
+                id="textoPost"
+                placeholder="No que você está pensando?"
+            ></textarea>
+
+            <button class="botao-publicar" onclick="criarPost()">
+                Publicar
+            </button>
+        </section>
+
+        <!-- Feed -->
+        <section id="feed">
+
+            <!-- Post inicial -->
+            <article class="post">
+
+                <div class="post-header">
+                    <div class="avatar">J</div>
+
+                    <div>
+                        <div class="nome">Pyetra</div>
+                        <div class="data">Agora</div>
+                    </div>
+                </div>
+
+                <div class="texto-post">
+                    Bem-vindo à minha nova rede social! 🚀
+                </div>
+
+                <div class="acoes">
+                    <button onclick="curtir(this)">
+                        ❤️ Curtir <span>0</span>
+                    </button>
+
+                    <button onclick="focarComentario(this)">
+                        💬 Comentar
+                    </button>
+
+                    <button class="excluir" onclick="excluirPost(this)">
+                        🗑️ Excluir
+                    </button>
+                </div>
+
+                <div class="comentarios">
+
+                    <div class="lista-comentarios"></div>
+
+                    <div class="campo-comentario">
+                        <input 
+                            type="text"
+                            placeholder="Escreva um comentário..."
+                            onkeydown="enviarComEnter(event, this)"
+                        >
+
+                        <button onclick="comentar(this)">
+                            Enviar
+                        </button>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        // Criar nova publicação
+        function criarPost() {
+
+            const textarea = document.getElementById("textoPost");
+            const texto = textarea.value.trim();
+
+            if (texto === "") {
+                alert("Digite alguma coisa antes de publicar!");
+                return;
+            }
+
+            const agora = new Date();
+
+            const horario = agora.toLocaleTimeString("pt-BR", {
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+
+            const post = document.createElement("article");
+
+            post.className = "post";
+
+            post.innerHTML = `
+                <div class="post-header">
+                    <div class="avatar">J</div>
+
+                    <div>
+                        <div class="nome">João Silva</div>
+                        <div class="data">Hoje às ${horario}</div>
+                    </div>
+                </div>
+
+                <div class="texto-post">
+                    ${escaparHTML(texto)}
+                </div>
+
+                <div class="acoes">
+
+                    <button onclick="curtir(this)">
+                        ❤️ Curtir <span>0</span>
+                    </button>
+
+                    <button onclick="focarComentario(this)">
+                        💬 Comentar
+                    </button>
+
+                    <button class="excluir" onclick="excluirPost(this)">
+                        🗑️ Excluir
+                    </button>
+
+                </div>
+
+                <div class="comentarios">
+
+                    <div class="lista-comentarios"></div>
+
+                    <div class="campo-comentario">
+
+                        <input 
+                            type="text"
+                            placeholder="Escreva um comentário..."
+                            onkeydown="enviarComEnter(event, this)"
+                        >
+
+                        <button onclick="comentar(this)">
+                            Enviar
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+            const feed = document.getElementById("feed");
+
+            feed.prepend(post);
+
+            textarea.value = "";
+        }
+
+
+        // Curtir publicação
+        function curtir(botao) {
+
+            const contador = botao.querySelector("span");
+
+            let quantidade = parseInt(contador.textContent);
+
+            if (botao.classList.contains("curtido")) {
+
+                quantidade--;
+
+                botao.classList.remove("curtido");
+
+            } else {
+
+                quantidade++;
+
+                botao.classList.add("curtido");
+
+            }
+
+            contador.textContent = quantidade;
+        }
+
+
+        // Adicionar comentário
+        function comentar(botao) {
+
+            const campo = botao.parentElement.querySelector("input");
+
+            const texto = campo.value.trim();
+
+            if (texto === "") {
+                return;
+            }
+
+            const lista = botao
+                .closest(".comentarios")
+                .querySelector(".lista-comentarios");
+
+            const comentario = document.createElement("div");
+
+            comentario.className = "comentario";
+
+            comentario.innerHTML = `
+                <strong>João Silva</strong>
+                ${escaparHTML(texto)}
+            `;
+
+            lista.appendChild(comentario);
+
+            campo.value = "";
+        }
+
+
+        // Comentar pressionando Enter
+        function enviarComEnter(event, input) {
+
+            if (event.key === "Enter") {
+
+                const botao = input.parentElement.querySelector("button");
+
+                comentar(botao);
+            }
+        }
+
+
+        // Focar no campo de comentário
+        function focarComentario(botao) {
+
+            const post = botao.closest(".post");
+
+            const input = post.querySelector(".campo-comentario input");
+
+            input.focus();
+        }
+
+
+        // Excluir publicação
+        function excluirPost(botao) {
+
+            const post = botao.closest(".post");
+
+            if (confirm("Tem certeza que deseja excluir esta publicação?")) {
+                post.remove();
+            }
+        }
+
+
+        // Evita que HTML digitado pelo usuário seja executado
+        function escaparHTML(texto) {
+
+            const div = document.createElement("div");
+
+            div.textContent = texto;
+
+            return div.innerHTML;
+        }
+
+    </script>
+
+</body>
+</html>
